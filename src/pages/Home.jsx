@@ -1,9 +1,11 @@
 import React from 'react'
+import {Luckysheet, Navbar} from '../components/'
 
 export default function Home() {
   return (
     <div>
-      ini home
+      <Navbar/>
+      <Luckysheet/>
     </div>
   )
 }

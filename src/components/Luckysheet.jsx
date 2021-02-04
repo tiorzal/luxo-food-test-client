@@ -13,7 +13,7 @@ export default function Luckysheet() {
 }
 
 const luckyCss = {
-  margin: "0px",
+  marginTop: "56px",
   padding: "0px",
   position: "absolute",
   width: "100%",

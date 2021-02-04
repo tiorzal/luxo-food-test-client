@@ -5,3 +5,5 @@ const loginguard = (to, from, next) => {
     next.redirect('/login')
   }
 }
+
+export default loginguard
