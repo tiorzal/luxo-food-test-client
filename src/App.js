@@ -9,7 +9,7 @@ function App() {
     <div className="App">
       <GuardProvider guards={[loginguard]}>
         <Switch>
-          <Route exact  path="register" component={Register}/>
+          <Route exact  path="/register" component={Register}/>
           <Route exact path="/login" component={Login}/>
           <GuardedRoute exact path="/" component={Home}/>
         </Switch>

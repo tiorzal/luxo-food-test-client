@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { LOGIN } from "../query";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 
 export default function Login() {
@@ -58,6 +58,9 @@ export default function Login() {
               Password
             </label>
             <input className="form-control" type="password" name="password" value={loginData.password} onChange={(e) => changeHanlder(e)}/>
+          </div>
+          <div>
+            <Link to="/register">Register</Link>
           </div>
           <div className="text-center mt-2">
             <input type="submit" className="btn btn-primary" value="login" />
