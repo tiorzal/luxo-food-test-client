@@ -1,0 +1,1 @@
+export { default as loginguard } from './loginguard'
