@@ -15,7 +15,7 @@ export default function Navbar() {
       <div className="navbar">
         <div className="navbar-brand"> Luxo Food </div>
         <div>
-          <NavLink to="Home" className="mx-2">Home</NavLink>
+          <NavLink to="/" className="mx-2">Home</NavLink>
           <NavLink to="Register" className="mx-2">Register</NavLink>
           <NavLink to="Login" className="mx-2">Login</NavLink>
           <button className="btn btn-primary" onClick={logoutHandler}>logout</button>

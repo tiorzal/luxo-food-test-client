@@ -7,7 +7,10 @@ query loadData{
     firstname
     lastname
     email
-    data
+    Sheets{
+      id
+      title
+    }
   }
 }
 `

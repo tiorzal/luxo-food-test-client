@@ -1,34 +1,24 @@
 import React, { useEffect } from "react";
 import { useMutation, useQuery } from "@apollo/client";
-import { SAVE, LOAD } from "../query";
+import { SAVE } from "../query";
 
-export default function Luckysheet() {
+export default function Luckysheet({ data }) {
   const luckysheet = window.luckysheet;
 
   const [saveData] = useMutation(SAVE, {
     context: {
       headers: {
-        token: localStorage.getItem("token"),
-      },
-    },
-    errorPolicy: "all",
-  });
-
-  const { data, refetch } = useQuery(LOAD, {
-    context: {
-      headers: {
-        token: localStorage.getItem("token"),
-      },
-    },
-  });
+        token: localStorage.getItem('token')
+      }
+    }
+  })
 
   useEffect(() => {
-    if (data) {
-      console.log(data);
+    
       luckysheet.create({
         container: "luckysheet",
         // plugins: ["chart"],
-        title: `${data.loadData.email}`,
+        title: `${data.title}`,
         data: [
           {
             name: "Cell",
@@ -68,37 +58,34 @@ export default function Luckysheet() {
             image: [],
             showGridLines: 1,
             dataVerification: {},
-            data: JSON.parse(data.loadData.data),
+            data: (data.data) ? JSON.parse(data.data): null,
           },
         ],
       });
-    }
+    
   }, [luckysheet, data]);
 
   const onClickHanlderSave = () => {
-    // console.log(JSON.stringify(luckysheet.getLuckysheetfile()[0].data), 'ini');
+    console.log(luckysheet.getAllSheets()[0].data);
+    console.log(data.id);
     saveData({
       variables: {
-        data: JSON.stringify(luckysheet.getLuckysheetfile()[0].data),
-      },
-    });
+        id: data.id,
+        data: JSON.stringify(luckysheet.getAllSheets()[0].data)
+      }
+    })
   };
-
-  const onClickHanlderLoad =() => {
-    refetch()
-  }
 
   return (
     <div>
       <button onClick={() => onClickHanlderSave()}>save</button>
-      <button onClick={() => onClickHanlderLoad()}>load</button>
       <div id="luckysheet" style={luckyCss}></div>
     </div>
   );
 }
 
 const luckyCss = {
-  marginTop: "85px",
+  marginTop: "120px",
   padding: "0px",
   position: "absolute",
   width: "100%",
