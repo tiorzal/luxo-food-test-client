@@ -54,7 +54,7 @@ export default function AddSheetModal({ status = false, setToggle, doFunction, m
             {message}
           </div>
           <div className="card-footer d-flex justify-content-around">
-            <input placeholder="new sheet title..." type="text" name="title" value={addData.title} onChange={(e) => onChangeHanlder(e)}/>
+            <input required placeholder="new sheet title..." type="text" name="title" value={addData.title} onChange={(e) => onChangeHanlder(e)}/>
             <button className="btn btn-primary" onClick={okHandler}>yes</button>
             <button className="btn btn-secondary" onClick={noHandler}>no</button>
           </div>
