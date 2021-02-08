@@ -14,7 +14,7 @@ export default function Luckysheet({ data }) {
   })
 
   useEffect(() => {
-    
+      
       luckysheet.create({
         container: "luckysheet",
         title: `${data.title}`,
@@ -75,7 +75,7 @@ export default function Luckysheet({ data }) {
 
   return (
     <div>
-      <button onClick={() => onClickHanlderSave()}>save</button>
+      <button className="btn btn-primary" onClick={() => onClickHanlderSave()}>save</button>
       <div id="luckysheet" style={luckyCss}></div>
     </div>
   );
