@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom'
 import { useMutation } from '@apollo/client'
 import { LOAD, DELETE } from '../query'
 
-export default function SheetCard({ sheet}) {
+export default function SheetCard({ sheet , refetchHome, noIdx}) {
 
   const history = useHistory()
 
@@ -22,16 +22,17 @@ export default function SheetCard({ sheet}) {
             token: localStorage.getItem('token')
           }
         }}
-    ]
+    ],
+    onCompleted: () => {
+      refetchHome()
+    }
   })
 
   const goToWorkPage = () => {
-    console.log(sheet.id);
     history.push(`/sheet/${sheet.id}`)
   }
 
   const doDelete = () => {
-    console.log(sheet.id);
     deleteSheet({
       variables: {
         id: sheet.id
@@ -40,15 +41,17 @@ export default function SheetCard({ sheet}) {
   }
 
   return (
-      <div className="row d-flex">
-        <div className="col-8 text-start">
+      <tr>
+        <td>
+          {noIdx + 1}
+        </td>
+        <td>
           <div>{sheet.title}</div>
-        </div>
-        <div className="col-4">
+        </td>
+        <td>
           <button onClick={goToWorkPage}>open</button>
           <button onClick={doDelete}>delete</button>
-        </div>
-      
-    </div>
+        </td>
+      </tr>
   )
 }

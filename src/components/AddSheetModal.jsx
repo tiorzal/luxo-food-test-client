@@ -27,8 +27,9 @@ export default function AddSheetModal({ status = false, setToggle, doFunction, m
         createData: addData
       }
     })
-    console.log(result);
-    setToggle(false)
+    if(result){
+      setToggle(false)
+    }
   }  
 
   const noHandler = () => {

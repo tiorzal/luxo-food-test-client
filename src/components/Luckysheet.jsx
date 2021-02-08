@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useMutation, useQuery } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 import { SAVE } from "../query";
 
 export default function Luckysheet({ data }) {
@@ -17,7 +17,6 @@ export default function Luckysheet({ data }) {
     
       luckysheet.create({
         container: "luckysheet",
-        // plugins: ["chart"],
         title: `${data.title}`,
         data: [
           {
@@ -66,8 +65,6 @@ export default function Luckysheet({ data }) {
   }, [luckysheet, data]);
 
   const onClickHanlderSave = () => {
-    console.log(luckysheet.getAllSheets()[0].data);
-    console.log(data.id);
     saveData({
       variables: {
         id: data.id,
