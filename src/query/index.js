@@ -5,3 +5,4 @@ export { default as LOAD } from "./load";
 export { default as CREATE } from "./create";
 export { default as FIND_BY_ID } from "./findbyid";
 export { default as DELETE } from "./delete"
+export { default as IS_LOGGED_IN_STATUS } from "./isLoggedIn"

@@ -4,10 +4,14 @@ import { Switch, Route } from 'react-router-dom';
 import { loginguard } from './Utils'
 import { GuardProvider, GuardedRoute } from 'react-router-guards';
 import { Navbar } from './components'
+import { isLoggedInVar } from './cache'
 
 function App() {
+  if(localStorage.getItem('token')){
+    isLoggedInVar(true)
+  }
   return (
-    <div className="App">
+    <div>
       <Navbar/>
       <GuardProvider guards={[loginguard]}>
         <Switch>
