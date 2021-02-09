@@ -4,9 +4,13 @@ import { useQuery } from "@apollo/client";
 import { LOAD } from "../query";
 
 export default function Home() {
+  //local state for sheets
   const [sheets, setSheets] = useState([]);
+
+  //local state for modal toggling
   const [addModal, setAddModal] = useState(false);
 
+  //query function to fetch user sheets and data
   const { data, loading, refetch } = useQuery(LOAD, {
     context: {
       headers: {
@@ -17,6 +21,7 @@ export default function Home() {
     fetchPolicy: "no-cache",
   });
 
+  //use effect function to handle when the user data is fetched and set it into local state
   useEffect(() => {
     if (data) {
       const { loadData } = data;
@@ -24,6 +29,7 @@ export default function Home() {
     }
   }, [data]);
 
+  //function to show the add sheet modal
   const showAddModal = () => {
     setAddModal(true);
   };

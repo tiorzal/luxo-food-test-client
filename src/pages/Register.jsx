@@ -8,10 +8,12 @@ export default function Register() {
 
   const history = useHistory()
 
+  //mutation function for register
   const [doRegister] = useMutation(REGISTER, {
     errorPolicy: 'all',
   })
 
+  //local state for register data
   const [registerData, setRegisterData] = useState({
     email: "",
     password: "",
@@ -19,8 +21,10 @@ export default function Register() {
     lastname: ""
   })
 
+  //local state for modal toggling
   const [modals, setModals] = useState(false)
 
+  //handler to set register from data to local state
   const changeHanlder = (e) => {
     const name = e.target.name
     const value = e.target.value
@@ -31,6 +35,7 @@ export default function Register() {
     })
   }
 
+  //register handler, if it success it will redirect to page into login, else an error modal will popout
   const submitHandler =  async (e) => {
     e.preventDefault()
     console.log(registerData);

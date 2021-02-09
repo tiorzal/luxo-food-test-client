@@ -2,6 +2,7 @@ import React,{ useState } from 'react'
 import { useMutation } from '@apollo/client'
 import { CREATE } from '../query' 
 
+//custom modal for adding a new sheet
 export default function AddSheetModal({ status = false, setToggle, doFunction, message }) {
   
   const [addData, setAddData] = useState({

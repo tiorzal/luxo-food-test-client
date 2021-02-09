@@ -9,12 +9,16 @@ import { ErrorModals } from '../components'
 export default function Login() {
   const history = useHistory();
   
+  //local state for login data
   const [loginData, setLoginData] = useState({
     email : '',
     password: ''
   })
+
+  //state for toggling modal
   const [modals, setModals] = useState(false)
 
+  //mutation function for login
   const [doLogin] = useMutation(LOGIN, { 
     errorPolicy: 'all',
     onCompleted: () => {
@@ -22,6 +26,7 @@ export default function Login() {
     }
   })
 
+  //handler to set the value on login from to local state
   const changeHanlder = (e) => {
     const name = e.target.name
     const value = e.target.value
@@ -32,6 +37,7 @@ export default function Login() {
     })
   }
 
+  //handler on submit login form, set token to localstorage and set user login status to true
   const submitHandler = async (e) => {
     e.preventDefault()
     try {

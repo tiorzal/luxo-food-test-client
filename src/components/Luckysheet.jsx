@@ -5,6 +5,7 @@ import { SAVE } from "../query";
 export default function Luckysheet({ data }) {
   const luckysheet = window.luckysheet;
 
+  //mutation function to save the data into database
   const [saveData] = useMutation(SAVE, {
     context: {
       headers: {
@@ -13,6 +14,7 @@ export default function Luckysheet({ data }) {
     }
   })
 
+  //a use effect function to create the sheet after the data is fetched
   useEffect(() => {
       
       luckysheet.create({
@@ -64,6 +66,7 @@ export default function Luckysheet({ data }) {
     
   }, [luckysheet, data]);
 
+  //a handler function to save the data
   const onClickHanlderSave = () => {
     saveData({
       variables: {

@@ -7,6 +7,7 @@ import { Navbar } from './components'
 import { isLoggedInVar } from './cache'
 
 function App() {
+  //check localstorage when the app start and put user status on cache
   if(localStorage.getItem('token')){
     isLoggedInVar(true)
   }

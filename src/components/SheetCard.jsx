@@ -4,12 +4,15 @@ import { useMutation } from '@apollo/client'
 import { LOAD, DELETE } from '../query'
 import ConfirmModals from './ConfirmModals'
 
+//a card used on home page to represent everysheet that user have
 export default function SheetCard({ sheet , refetchHome, noIdx}) {
 
   const history = useHistory()
 
+  //local state for modal toggling
   const [toggle, setToggle] = useState(false)
 
+  //mutation function for deleting a sheet
   const [deleteSheet] = useMutation(DELETE, {
     context: {
       headers: {
@@ -31,14 +34,17 @@ export default function SheetCard({ sheet , refetchHome, noIdx}) {
     }
   })
 
+  //hanlder to push the page into work page
   const goToWorkPage = () => {
     history.push(`/sheet/${sheet.id}`)
   }
 
+  //a function to show delete confirmation modal
   const doDelete = () => {
     setToggle(true)
   }
 
+  //a function to delete a sheet, this function passed to modal component
   const executeDelete = () => {
     deleteSheet({
       variables: {

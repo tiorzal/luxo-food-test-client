@@ -1,5 +1,6 @@
 import React from 'react'
 
+//custom modal for showing error
 export default function ErrorModals({ show = false, content, toggle }) {
 
   const toggleHandler = () => {

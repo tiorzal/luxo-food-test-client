@@ -5,9 +5,14 @@ import { useQuery } from '@apollo/client'
 import { FIND_BY_ID } from '../query'
 
 export default function WorkPage() {
+
+  //get id from params
   const { id } = useParams()
 
+  //local state for sheet data
   const [localData, setLocalData] = useState({})
+
+  //query function for fetching current sheet data
   const {data, loading, error} = useQuery(FIND_BY_ID, {
     context: {
       headers: {
@@ -19,6 +24,7 @@ export default function WorkPage() {
     }
   })
 
+  //use effect function to handle when the data is fetched and set it into local state
   useEffect( () => {
     if(data){
       setLocalData(data.findbyid)

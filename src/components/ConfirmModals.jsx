@@ -1,5 +1,6 @@
 import React from 'react'
 
+//custom modal for confirmation
 export default function ConfirmModals({ status = false, setToggle, doFunction, message }) {
 
   const okHandler = () => {

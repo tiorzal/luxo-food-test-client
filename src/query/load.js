@@ -1,5 +1,6 @@
 import { gql } from '@apollo/client';
 
+//a query to load user sheets and data after the homepage is mounted
 const load = gql`
 query loadData{
   loadData{

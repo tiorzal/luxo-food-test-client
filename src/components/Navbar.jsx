@@ -7,16 +7,19 @@ import { isLoggedInVar } from '../cache'
 
 export default function Navbar() {
   const history = useHistory()
+  //local state for logged in user status
   const [localStatus, setLocalStatus] = useState(false)
+  //a query to check logged in user status on cache
   const { data } = useQuery(IS_LOGGED_IN_STATUS)
 
-
+  // a use effect function to set logged in user status into local state
   useEffect(() => {
     if(data){
       setLocalStatus(data.getLoggedInStatus)
     }
   }, [data])
 
+  // a function to do logout, set loggen user status to false, clearing localstorage, and push the page into login
   const logoutHandler = () => {
     localStorage.clear()
     isLoggedInVar(false)
